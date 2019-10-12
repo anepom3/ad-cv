@@ -5,12 +5,15 @@ from tensorflow.keras.layers import Dense, Flatten, GlobalAveragePooling2D
 from tensorflow.keras.applications.inception_v3 import preprocess_input
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from pathlib import Path
+from datetime import datetime
+import matplotlib.pyplot as plt
 # Image_Classifier Function
 # TODO Update classifier using ResNet50 and Inception
 # TODO Calculate metrics: accuracy, sensitiviy, recall, performance
+
+
 def image_classifier():
     num_classes = 2
-    # resnet_weights_path = '../Models/resnet50/resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5'
 
     my_new_model = Sequential()
     my_new_model.add(InceptionV3(include_top=False, pooling='avg', weights='imagenet'))
@@ -27,36 +30,54 @@ def image_classifier():
 
     print("Compile Model Complete")
 
-
-
     image_size = 224
-    data_generator = ImageDataGenerator(preprocess_input)
+    data_generator = ImageDataGenerator(preprocess_input, validation_split=0.2)
 
-    train_path = Path(
-        "C:\\Users\\antho\\Google Drive\\anepom3\\UIUC\\Extracurriculars\\BMES\\Design Team\\Health Mirror\\Software\\Transfer Learning\\AD\\images\\train")
-    validation_path = Path(
-        "C:\\Users\\antho\\Google Drive\\anepom3\\UIUC\\Extracurriculars\\BMES\\Design Team\\Health Mirror\\Software\\Transfer Learning\\AD\\images\\val")
+    path = Path("images")
 
     train_generator = data_generator.flow_from_directory(
-        directory=train_path,
+        directory=path,
         target_size=(image_size, image_size),
         batch_size=10,
-        class_mode='categorical')
+        class_mode='categorical',
+        subset="training")
 
     validation_generator = data_generator.flow_from_directory(
-        directory=validation_path,
+        directory=path,
         target_size=(image_size, image_size),
-        class_mode='categorical')
+        class_mode='categorical',
+        subset="validation")
 
     # fit_stats below saves some statistics describing how model fitting went
     # the key role of the following line is how it changes my_new_model by fitting to data
-    for i in range(10):
-        fit_stats = my_new_model.fit_generator(train_generator,
-                                               steps_per_epoch=22,
-                                               validation_data=validation_generator,
-                                               validation_steps=1)
-        print(fit_stats.history.keys())
-        print(fit_stats.history['val_acc'][0])
+    fit_stats = my_new_model.fit_generator(train_generator,
+                                           steps_per_epoch=1,
+                                           epochs=10,
+                                           validation_data=validation_generator,
+                                           validation_steps=1)
+    # datetime object containing current date and time
+    now = datetime.now()
+    # dd/mm/YY H:M:S
+
+    dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
+    print("date and time =", dt_string)
+    fig, axs = plt.subplots(2, 1, constrained_layout=True)
+    axs[0].plot(fit_stats.history['acc'])
+    axs[0].plot(fit_stats.history['val_acc'])
+    axs[0].set_title('Model Accuracy')
+    axs[0].set_xlabel('Epoch')
+    axs[0].set_ylabel('Accuracy')
+    axs[0].legend(['Train', 'Test'], loc='upper left')
+    fig.suptitle('Model Run ' + dt_string, fontsize=16)
+
+    axs[1].plot(fit_stats.history['loss'])
+    axs[1].plot(fit_stats.history['val_loss'])
+    axs[1].set_title('Model Loss')
+    axs[1].set_xlabel('Epoch')
+    axs[1].set_ylabel('Loss')
+    axs[1].legend(['Train', 'Test'], loc='upper left')
+
+    plt.show()
 
     print("Fit Model Complete")
 
