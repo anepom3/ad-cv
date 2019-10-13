@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="22bb9b5c-2b7c-43e6-a4be-fc1e5a1b7e0c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/adjustment_log/adjustment_log.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/adjustment_log/adjustment_log.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adjustment_log/~$adjustment_log.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/adjustment_log/~$adjustment_log.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adjustment_log/~$adjustment_log.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/result_log.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/results/Tables/result_log.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results/Tables/result_log.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/transfer_learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/transfer_learning.py" afterDir="false" />
     </list>
@@ -18,10 +19,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/transfer_learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="73" column="56" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
+            <state relative-caret-position="212">
+              <caret line="147" selection-start-line="147" selection-end-line="147" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#351#378#0" />
+                <element signature="e#734#6048#0" />
+                <element signature="e#6367#8038#0" />
               </folding>
             </state>
           </provider>
@@ -32,6 +36,24 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-24">
               <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/Program Files/Python37/Lib/site-packages/keras_preprocessing/image/image_data_generator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8619">
+              <caret line="517" column="17" selection-start-line="517" selection-start-column="17" selection-end-line="517" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/Program Files/Python37/Lib/site-packages/keras_preprocessing/image/directory_iterator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-453">
+              <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -50,6 +72,7 @@
       <find>History</find>
       <find>preprocess_input</find>
       <find>filepath</find>
+      <find>classes</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -206,13 +229,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.50833994" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32978722" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14716312" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -285,26 +309,12 @@
         <state relative-caret-position="-11434" />
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/site-packages/keras_preprocessing/image/image_data_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="517" column="17" selection-start-line="517" selection-start-column="17" selection-end-line="517" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files/Python37/Lib/site-packages/keras/preprocessing/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/site-packages/keras_preprocessing/image/directory_iterator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -365,12 +375,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/site-packages/keras_preprocessing/image/image_data_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8619">
+          <caret line="517" column="17" selection-start-line="517" selection-start-column="17" selection-end-line="517" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/site-packages/keras_preprocessing/image/directory_iterator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-453">
+          <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/transfer_learning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="73" column="56" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
+        <state relative-caret-position="212">
+          <caret line="147" selection-start-line="147" selection-end-line="147" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#351#378#0" />
+            <element signature="e#734#6048#0" />
+            <element signature="e#6367#8038#0" />
           </folding>
         </state>
       </provider>
