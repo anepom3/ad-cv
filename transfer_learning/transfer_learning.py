@@ -31,8 +31,9 @@ def image_classifier():
     print("Compile Model Complete")
 
     image_size = 224
+    seed = 7
     data_generator = ImageDataGenerator(preprocess_input, validation_split=0.2)
-
+    aug_data_generator = ImageDataGenerator(preprocess_input, validation_split=0.2, horizontal_flip=True)
     path = Path("images")
 
     train_generator = data_generator.flow_from_directory(
@@ -40,19 +41,21 @@ def image_classifier():
         target_size=(image_size, image_size),
         batch_size=10,
         class_mode='categorical',
-        subset="training")
+        subset="training",
+        seed=seed)
 
     validation_generator = data_generator.flow_from_directory(
         directory=path,
         target_size=(image_size, image_size),
         class_mode='categorical',
-        subset="validation")
+        subset="validation",
+        seed=seed)
 
     # fit_stats below saves some statistics describing how model fitting went
     # the key role of the following line is how it changes my_new_model by fitting to data
     fit_stats = my_new_model.fit_generator(train_generator,
                                            steps_per_epoch=1,
-                                           epochs=10,
+                                           epochs=3,
                                            validation_data=validation_generator,
                                            validation_steps=1)
     # datetime object containing current date and time
@@ -60,6 +63,10 @@ def image_classifier():
     # dd/mm/YY H:M:S
 
     dt_string = now.strftime("%m/%d/%Y %H:%M:%S")
+    save_date = now.strftime("%m_%d_%y_%H_%M_%S")
+    save_fig_path = Path('results/Graphs')/ (save_date + '_AD.png')
+    save_result_path = Path('results/Tables/result_log.csv')
+    print(save_fig_path)
     print("date and time =", dt_string)
     fig, axs = plt.subplots(2, 1, constrained_layout=True)
     axs[0].plot(fit_stats.history['acc'])
@@ -76,8 +83,15 @@ def image_classifier():
     axs[1].set_xlabel('Epoch')
     axs[1].set_ylabel('Loss')
     axs[1].legend(['Train', 'Test'], loc='upper left')
-
+    plt.savefig(save_fig_path)
     plt.show()
+
+    import csv
+    row = fit_stats.history['val_acc']
+    with open(save_result_path, 'a') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerow([dt_string]+row)
+    csvFile.close()
 
     print("Fit Model Complete")
 
